@@ -1,0 +1,138 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', 'Helvetica', Arial, sans-serif;    
+}
+
+#search_area {
+    background: url(C:\Users\Victor\OneDrive\Documentos\NetBeansProjects\MundoCine) center;
+    background-size: cover;
+    height: 273px;
+    color: #fff;
+}
+
+.a-padding-extra-large {
+    padding: 20px 26px !important;
+}
+.a-section {
+    margin-bottom: 22px;
+}
+
+.a-text-center {
+    text-align: center !important;
+}
+#search_area .header_imdb_logo {
+    background-image: url(https://m.media-amazon.com/images/S/sash/NJ7-fmDvyVyrGGY.png);
+    height: 34px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 83px;
+}
+
+a, a:link, a:visited {
+    text-decoration: none;
+    color: #007185;
+}
+.a-block, .aok-block {
+    display: block;
+    position: relative;
+}
+.a-spacing-top-extra-large {
+    margin-top: 80px !important;
+}
+.a-spacing-base, .a-ws .a-ws-spacing-base {
+    margin-bottom: 12px !important;
+}
+.a-spacing-base, .a-ws .a-ws-spacing-base {
+    margin-bottom: 12px !important;
+}
+.a-size-extra-large {
+    text-rendering: optimizeLegibility;
+}
+.a-size-extra-large {
+    font-size: 28px !important;
+    line-height: 36px !important;
+}
+.a-ordered-list.a-nostyle li, .a-unordered-list.a-nostyle li, ol.a-nostyle li, ul.a-nostyle li {
+    list-style: none;
+}
+.a-ordered-list li, .a-unordered-list li, ol li, ul li {
+    word-wrap: break-word;
+    margin: 0;
+}
+.a-unordered-list li, ul li {
+    list-style: disc;
+}
+.a-spacing-mini, .a-ws .a-ws-spacing-mini {
+    margin-bottom: 4px !important;
+}
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    unicode-bidi: isolate;
+    padding: 4px;
+    
+}
+.a-ordered-list.a-nostyle, .a-unordered-list.a-nostyle, ol.a-nostyle, ul.a-nostyle {
+    margin-left: 0;
+    color: #0F1111;
+}
+.a-unordered-list, ul {
+    margin: 0 0 0 18px;
+    color: #0F1111;
+}
+
+ul {
+    list-style-type: disc;
+}
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    unicode-bidi: isolate;
+}
+
+.hp-container{
+    max-width: 1280px;
+    width: 100%;
+    margin: auto;
+}
+
+.question-container {
+        width: 80%;
+        margin-left:  100px;
+        float: left;
+        padding: 15px;
+    }
+
+    .question-container ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .question-container li {
+        margin-bottom: 10px;
+    }
+    
+    .answer-container{
+        width: 80%;
+        margin-right: 50px;
+        float: right;
+        display: grid;
+        align-items: center;
+    }
+    .answer-container .answer-item p{
+        padding-top: 20px;
+    }
+    

@@ -1,0 +1,199 @@
+
+CREATE DATABASE Mundocine;
+
+USE Mundocine;
+
+CREATE TABLE Cliente(
+CodCliente INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+Nombres VARCHAR(40) NOT NULL,
+ApePaterno VARCHAR(20) NOT NULL,
+ApeMaterno VARCHAR(20) NOT NULL,
+DNI INT NOT NULL,
+FechaNacimiento DATE NOT NULL,
+Usuario VARCHAR(20) NOT NULL,
+Correo VARCHAR(100) NOT NULL,
+Contraseña VARCHAR(100) NOT NULL
+);
+
+
+
+CREATE TABLE Sugerencias(
+CodSugerencia INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+Nombre VARCHAR(50) NOT NULL,
+Correo VARCHAR(100) NOT NULL,
+Asunto VARCHAR(50) NOT NULL,
+Contenido VARCHAR(1000) NOT NULL
+);
+
+CREATE TABLE Pelicula(
+CodPelicula INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+Nombre VARCHAR(100) NOT NULL,
+Género VARCHAR(50) NOT NULL,
+FechaEstreno DATE NOT NULL
+);
+
+CREATE TABLE Horario(
+CodHorario INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+CodPelicula INT NOT NULL,
+Fecha DATE NOT NULL,
+Hora TIME NOT NULL,
+FOREIGN KEY (CodPelicula) REFERENCES Pelicula(CodPelicula)
+);
+
+CREATE TABLE Categoria(
+CodCategoria INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+Nombre VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE Snacks(
+CodSnacks INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+CodCategoria INT NOT NULL,
+Descripcion VARCHAR(30) NOT NULL,
+Precio DECIMAL(10,2),
+FechaVencimiento DATE NOT NULL,
+FOREIGN KEY (CodCategoria) REFERENCES Categoria(CodCategoria)
+);
+
+CREATE TABLE Locales(
+CodLocal INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+Nombre VARCHAR(50) NOT NULL,
+Direccion VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Entrada(
+CodEntrada INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+CodCliente INT NOT NULL,
+CodLocal INT NOT NULL,
+Fecha DATE NOT NULL,
+Hora TIME NOT NULL,
+FOREIGN KEY (CodCliente) REFERENCES Cliente(CodCliente),
+FOREIGN KEY (CodLocal) REFERENCES Locales(CodLocal)
+);
+
+CREATE TABLE DetalleEntrada(
+CodEntrada INT NOT NULL,
+CodPelicula INT NOT NULL,
+Cantidad INT NOT NULL,
+PRIMARY KEY(CodEntrada, CodPelicula),
+FOREIGN KEY (CodEntrada) REFERENCES Entrada(CodEntrada),
+FOREIGN KEY (CodPelicula) REFERENCES Pelicula(CodPelicula)
+);
+
+CREATE TABLE Compra(
+CodCompra INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+CodCliente INT NOT NULL,
+CodLocal INT NOT NULL,
+Fecha DATE NOT NULL,
+Hora DATE NOT NULL,
+FOREIGN KEY (CodCliente) REFERENCES Cliente(CodCliente),
+FOREIGN KEY (CodLocal) REFERENCES Locales(CodLocal)
+);
+
+CREATE TABLE DetalleCompra(
+CodCompra INT NOT NULL,
+CodSnacks INT NOT NULL,
+Cantidad INT NOT NULL,
+FOREIGN KEY (CodCompra) REFERENCES Compra(CodCompra),
+FOREIGN KEY (CodSnacks) REFERENCES Snacks(CodSnacks)
+);
+ALTER TABLE snacks DROP foreign key snacks_ibfk_1;
+ALTER TABLE detallecompra DROP foreign key detallecompra_ibfk_1;
+ALTER TABLE detallecompra DROP foreign key detallecompra_ibfk_2;
+DROP TABLE snacks;
+DROP TABLE detallecompra;
+
+
+CREATE TABLE ItemDulceria(
+CodItem INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+CodCategoria INT NOT NULL,
+Nombre varchar(50) NOT NULL,
+Descripcion VARCHAR(70) NOT NULL,
+Precio DECIMAL(4,2) NOT NULL,
+Stock INT NOT NULL,
+FOREIGN KEY (CodCategoria) REFERENCES Categoria(CodCategoria)
+);
+
+CREATE TABLE DetalleCompra(
+CodDetalleCompra INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+CodCompra INT NOT NULL,
+CodItemDulceria INT NOT NULL,
+Cantidad INT NOT NULL,
+Subtotal decimal(5,2),
+FOREIGN KEY (CodCompra) REFERENCES Compra(CodCompra),
+FOREIGN KEY (CodItemDulceria) REFERENCES ItemDulceria(CodItem)
+);
+
+CREATE TABLE Reclamos(
+CodReclamo INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+NombreCli VARCHAR(100) NOT NULL,
+CorreoReclamo VARCHAR(100) NOT NULL,
+dniReclamo VARCHAR(100) NOT NULL,
+fechaReclamo DATE NOT NULL,
+AsuntoReclamo VARCHAR(50) NOT NULL,
+ContenidoReclamo VARCHAR(1000) NOT NULL,
+CodLocal int not null,
+foreign key (CodLocal) References Locales(CodLocal)
+);
+CREATE TABLE Area
+(
+    CodArea int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    Descripcion varchar(100) NOT NULL,
+    estado varchar(10) DEFAULT 'activo' NOT NULL,
+    INDEX (estado)
+);
+
+
+CREATE TABLE Empleado
+(
+    CodEmpleado int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    CodLocal int NOT NULL,
+    CodArea int NOT NULL,
+    Nombre varchar(30) NOT NULL,
+    Apellidos varchar(30) NOT NULL,
+    FechaNacimiento date NOT NULL,
+    DNI varchar(15) NOT NULL UNIQUE,
+    Sexo varchar(10) NOT NULL,
+    Celular varchar(15) NOT NULL UNIQUE,
+    Salario decimal(10,2) NOT NULL,
+    Correo varchar(100) NOT NULL UNIQUE,
+    Clave varchar(50) NOT NULL,
+    estado varchar(10) DEFAULT 'activo' NOT NULL,
+    FOREIGN KEY (CodLocal) REFERENCES Locales(CodLocal),
+    FOREIGN KEY (CodArea) REFERENCES Area(CodArea),
+    INDEX (estado)
+);
+
+ALTER TABLE Compra MODIFY COLUMN Hora time;
+ALTER TABLE Compra ADD COLUMN Total decimal(5,2);
+
+insert into categoria(Nombre) values ("Bebida");
+insert into categoria(Nombre) values ("Canchita");
+insert into categoria(Nombre) values ("Golosina");
+
+insert into itemdulceria(CodCategoria,Nombre,Descripcion,Precio,Stock) values (2,'cancha grande','cancha tamaño grande',17.00,20);
+insert into itemdulceria(CodCategoria,Nombre,Descripcion,Precio,Stock) values (2,'cancha mediana','cancha tamaño mediano',15.00,10);
+insert into itemdulceria(CodCategoria,Nombre,Descripcion,Precio,Stock) values (2,'cancha gigante','cancha tamaño gigante',25.00,0);
+insert into itemdulceria(CodCategoria,Nombre,Descripcion,Precio,Stock) values (3,'snicker','snack de chocolate',7.50,5);
+insert into itemdulceria(CodCategoria,Nombre,Descripcion,Precio,Stock) values (1,'gaseosa','gaseosa Grande de 32 oz',15.00,3);
+
+INSERT INTO Locales (Nombre, Direccion) VALUES ('MundoCine Angamos', 'Av. Angamos Nº 1803 y/o Av. Tomas Marsano Nº 961- Surquillo');
+INSERT INTO Locales (Nombre, Direccion) VALUES ('MundoCine Gamarra', 'Avenida Aviación 950 La Victoria, LIMA 13');
+INSERT INTO Locales (Nombre, Direccion) VALUES ('MundoCine San Miguel', 'Av. La Marina cuadra 25 con esquina Av. Parque de las Leyendas');
+
+INSERT INTO Reclamos (NombreCli, CorreoReclamo, dniReclamo, fechaReclamo, AsuntoReclamo, ContenidoReclamo, CodLocal) 
+VALUES ('Juan Pérez', 'juan.perez@example.com', '12345678', '2024-07-10', 'Problema con el sonido', 'El sonido de la película estaba muy bajo.', 1);
+
+INSERT INTO Reclamos (NombreCli, CorreoReclamo, dniReclamo, fechaReclamo, AsuntoReclamo, ContenidoReclamo, CodLocal) 
+VALUES ('María López', 'maria.lopez@example.com', '87654321', '2024-07-09', 'Asiento roto', 'El asiento estaba roto y no me pude sentar cómodamente.', 2);
+
+INSERT INTO Reclamos (NombreCli, CorreoReclamo, dniReclamo, fechaReclamo, AsuntoReclamo, ContenidoReclamo, CodLocal) 
+VALUES ('Carlos García', 'carlos.garcia@example.com', '11223344', '2024-07-08', 'Personal grosero', 'El personal en la taquilla fue muy grosero.', 3);
+
+INSERT INTO Reclamos (NombreCli, CorreoReclamo, dniReclamo, fechaReclamo, AsuntoReclamo, ContenidoReclamo, CodLocal) 
+VALUES ('Ana Martínez', 'ana.martinez@example.com', '44332211', '2024-07-07', 'Falta de limpieza', 'La sala de cine estaba muy sucia.', 1);
+
+INSERT INTO Reclamos (NombreCli, CorreoReclamo, dniReclamo, fechaReclamo, AsuntoReclamo, ContenidoReclamo, CodLocal) 
+VALUES ('Luis Fernández', 'luis.fernandez@example.com', '99887766', '2024-07-06', 'Retraso en la película', 'La película comenzó con 30 minutos de retraso.', 2);
+
+SELECT * FROM mundocine.itemdulceria;
+SELECT * FROM mundocine.categoria;

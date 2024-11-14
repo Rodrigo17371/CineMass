@@ -1,0 +1,128 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', 'Helvetica', Arial, sans-serif;    
+}
+.suggestions-principal-container{
+    width: 1280px;
+}
+.suggestionsUs {
+    position: relative;
+    width: 85%;
+    padding: 40px 100px;
+    margin: auto;
+}
+
+.suggestionsUs .tittle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+}
+
+.suggestionsUs .tittle h1 {
+    color: #16B3D6;
+    font-weight: 500;   
+}
+
+.suggestions {
+    border-radius: 5px;
+    padding: 40px;
+    background: #fff;
+    box-shadow: 0 5px 35px rgba(0,0,0,0.15);
+}
+
+.boxForm {
+    position: relative;
+    display: flex;
+    margin-top: 20px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.suggestions h3 {
+    color: #0e3959;
+    font-weight: 500;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+/*formulario*/
+.form {
+    width: 85%; /* Ajusta el ancho */
+    margin: 0 auto;
+}
+
+.form .row50 {
+    gap: 20px;
+}
+
+.inputForm {
+    display:flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.form .row100 .inputForm {
+    width: 100%;
+}
+
+.inputForm span {
+    color: #18b7ff;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weigth:500;
+}
+
+.inputForm input {
+    padding: 10px;
+    font-size: 1.1em;
+    outline:none;
+    border: 1px solid #333;
+}
+
+.inputForm textarea {
+    padding: 10px;
+    font-size: 1.1em;
+    outline:none;
+    border: 1px solid #333;
+    resize: none;
+    min-height: 220px;
+    margin-bottom: 10px;
+}
+
+.inputForm input[type="submit"]{
+    background: #ff578b;
+    color: #fff;
+    border: none;
+    font-size: 1.1em;
+    max-width: 120px;
+    font-weigth: 500;
+    cursor: pointer;
+    padding: 14px 15px;
+}
+
+.inputForm ::placeholder {
+    color: #999;
+}
+
+/*Responsive Design*/
+@media (max-width: 991px) {
+    body {
+        background: #03a9f5;
+    }
+ 
+    .suggestions {
+        padding: 20px;
+    }
+    
+    .form .row50 {
+        display: flex;
+        gap: 0;
+        flex-direction: column;
+    }
+    .inputForm {
+        width: 100%;
+    }
+}

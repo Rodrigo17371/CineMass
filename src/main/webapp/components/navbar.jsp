@@ -16,7 +16,7 @@
                                 font-weight: bold; font-size: 1.5rem; border: transparent;
                                 border-radius: 4px; cursor: pointer; height: 32px; padding: 0px 10px;
                                 font-size: 1.25rem;'>
-                            MundoCine
+                            CineMass
                         </button>                        
                     </div>
 

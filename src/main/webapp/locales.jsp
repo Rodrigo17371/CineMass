@@ -43,7 +43,7 @@
             <div class="locales">
                 <div class="titulo"><h1>Locales</h1></div>
                 <hr><br>
-                <div style="padding: 0px 0px 0px 12px"><h2>Aquí podrás encontrar todos los locales disponibles de MundoCine</h2></div>
+                <div style="padding: 0px 0px 0px 12px"><h2>Aquí podrás encontrar todos los locales disponibles de CineMass</h2></div>
                 <div class="contenedor">
                     <table class="tabla">
                         <caption>Lista de Locales</caption>

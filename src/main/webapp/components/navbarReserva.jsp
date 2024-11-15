@@ -4,7 +4,7 @@
 
 <%
     Customer customer = (Customer) session.getAttribute("customer");
-    String welcomeMessage = (customer != null) ? "Bienvenido " + customer.getUsuario() : "Iniciar sesiÃ³n";
+    String welcomeMessage = (customer != null) ? "Bienvenido " + customer.getUsuario() : "Iniciar sesion";
     boolean isLoggedIn = (customer != null);
 %>
 <!DOCTYPE html>

@@ -12,7 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Bienvenido a Mundo Cine</title>
+        <title>Bienvenido a CineMass</title>
         <link href="resources/css/home.css" rel="stylesheet" type="text/css"/>     
         <link href="resources/css/piePagina.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/navbar.css" rel="stylesheet" type="text/css"/>

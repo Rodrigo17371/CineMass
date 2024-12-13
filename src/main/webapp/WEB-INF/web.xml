@@ -44,6 +44,10 @@
         <servlet-name>DeleteClaim</servlet-name>
         <servlet-class>ServLets.DeleteClaim</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CustomerServlet</servlet-name>
+        <servlet-class>ServLets.CustomerServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SvHome</servlet-name>
         <url-pattern>/SvHome</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>DeleteClaim</servlet-name>
         <url-pattern>/DeleteClaim</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerServlet</servlet-name>
+        <url-pattern>/CustomerServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

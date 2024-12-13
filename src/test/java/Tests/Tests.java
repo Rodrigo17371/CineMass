@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.util.List;
 import modelo.dto.Locales;
 import modelo.dto.itemDulceria;
-import org.junit.jupiter.api.Test;
 
 
 public class Tests {
